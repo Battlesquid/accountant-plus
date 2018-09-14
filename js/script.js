@@ -1,12 +1,13 @@
 function A() {
 	firebase.initializeApp({
-		apiKey: "AIzaSyDq202HByiyxVjJ7H1GVxDiJyG53frzzNg",
-		authDomain: "accounter-b1e8f.firebaseapp.com",
-		databaseURL: "https://accounter-b1e8f.firebaseio.com",
-		projectId: "accounter-b1e8f",
+		apiKey: "AIzaSyArAEACBj8xQm-dvdLPSKrWe7EB6wLiIzQ",
+		authDomain: "accplus-561ef.firebaseapp.com",
+		databaseURL: "https://accplus-561ef.firebaseio.com",
+		projectId: "accplus-561ef",
 		storageBucket: "",
-		messagingSenderId: "889388335353"
+		messagingSenderId: "155910630275"
 	});
+
 	var auth = firebase.auth();
 	var db = firebase.database(),
 		transactionRef = db.ref('transactions'),
