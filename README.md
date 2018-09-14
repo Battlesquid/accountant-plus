@@ -1,2 +1,2 @@
-# accountant-plus
-A program to help manage money
+# Accountant Plus
+An application built to manage money and such.
