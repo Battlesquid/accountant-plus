@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="//console.re/connector.js" data-channel="c0b6-10e2-89a2" id="consolerescript"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<title>AccountantPlus</title>
+	<style>
+		.red {
+			color: red;
+		}
+		.red-outline {
+			border: 1px solid red;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="section">
+		<div class="container">
+			<nav class="level">
+				<div class="level-left">
+					<h3 class="title heading">AccountantPlus</h3>
+				</div>
+				<div class="level-right">
+					<a class="heading" id="userSignedIn" onclick="firebase.auth().signOut();">Logout</a>
+					<a class="heading" id="userSignedOut" onclick="var provider = new firebase.auth.GoogleAuthProvider();firebase.auth().signInWithPopup(provider);">Login</a>
+				</div>
+			</nav>
+			<nav class="level">
+				<div class="level-left">
+					<div class="tabs">
+						<ul>
+							<li id="btab" class="is-active"><a>Balance</a></li>
+							<li id="ltab"><a>Log History</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="level-right">
+					<a class="button is-large" id="add"><span class="icon is-large"><i class="fas fa-plus"></i></span></a>
+				</div>
+			</nav>
+		</div>
+		<div class="container" id="larea" style="display: none;">
+			<table class="table is-fullwidth">
+				<thead>
+					<tr>
+						<th>Revision</th>
+						<th>Author</th>
+						<th>Amount</th>
+						<th>Change</th>
+					</tr>
+				</thead>
+				<tbody id="tbparent">
+				</tbody>
+			</table>
+		</div>
+		<div id="barea" class="content" style="display: none;">
+			<figure>
+				<h4 style="text-decoration: underline;" class="subtitle heading">BALANCE</h4>
+				<h1 id="balance" class="title is-1"></h1>
+			</figure>
+		</div>
+	</div>
+	<div class="modal">
+		<div class="modal-background"></div>
+		<div class="modal-card">
+			<div class="modal-card-head">
+				<p class="modal-card-title">Add Log</p>
+			</div>
+			<div class="modal-card-body">
+				<span class="heading">Amount</span>
+				<div class="field">
+					<p class="control has-icons-left">
+						<span class="icon">
+							<i class="fas fa-dollar-sign"></i>
+						</span>
+						<input class="input" type="input" id="amt">
+					</p>
+				</div>
+
+				<span class="heading">Memo</span>
+				<textarea id="memo" class="textarea"></textarea>
+				<nav class="level">
+					<div class="level-left"></div>
+					<div class="level-right heading" id="memchar">
+	
+					</div>
+				</nav>
+			</div>
+			<div class="modal-card-foot">
+				<button class="button is-success change plus">
+					<span>Add</span>
+					<span class="icon">
+						<i class="fas fa-plus"></i>
+					</span>
+				</button>
+				<button class="button is-danger change">
+					<span>Subtract</span>
+					<span class="icon">
+						<i class="fas fa-minus"></i>
+					</span>
+				</button>
+				<button class="button" id="cancel">Cancel</button>
+			</div>
+		</div>
+		<button class="modal-close is-large" aria-label="close"></button>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+
+</html>
